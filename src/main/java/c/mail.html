@@ -1,0 +1,117 @@
+<Html>
+	<Head>
+		<title> 
+				Mailing....
+		</title>
+			
+		<style type="text/css">
+			body{
+				background-color:#555555;
+				color:whitesmoke;
+			}
+			textarea.mailto{
+				position:relative;
+				top:15px;
+				left:-1em;
+			}
+			textarea.cc{
+				position:relative;
+				top:15px;
+				right:-1.2em;
+			}
+			textarea.subject{
+				position:relative;
+				top:15px;
+				left: -0.7em;
+			}
+			textarea.body{
+				position:relative;
+				top:45px;
+				left: 0.6em;
+			}
+			label{
+				 padding-left: 20em;
+				text-align:left;
+				margin-right: 1.0em;
+			}
+			input.submit{
+			margin-top:2em;
+			margin-left: 35em;
+			}
+			
+		</style>
+		<script type="text/javascript">
+		/*function setfilepath()
+		{
+			var filepath=document.getElementById('file').value;
+			document.getElementById('hdFile').value = filePath;
+			document.getElementById('file').value = '';
+		}*/
+
+		function ccvalidate(id)
+		{
+			var flag=1;
+			var ccv=document.getElementById(id).value;
+			var cpos=ccv.indexOf(",");
+			var spos=ccv.indexOf(";");
+			var apos1=ccv.indexOf(":");
+			if((cpos!=-1)||(spos!=-1)||(apos1!=-1))
+			{
+				flag=0;
+				alert("Not a valid email-id");
+				return false;
+			}	
+			if(flag)
+			{
+				var cc=ccv;//document.getElementbyId("cc").value;;
+				var ccsplit=new Array();
+				ccsplit=cc.split(" ");
+				var k =ccsplit.length;
+				var count;
+				for(var i=0; i <= k; i++) 
+				{
+					count=0;
+					var s= ccsplit[i];
+					count=s.match(/@/g);
+					if((count.length)>1)
+					{
+						alert("Please enter email id's with spaces between them");
+						return false;
+					}
+					//alert(s);
+					var apos=s.indexOf("@");
+					var dpos=s.lastIndexOf(".");
+					var d=s.length;
+					var lastpos=d-1;
+					if(apos<1 || (dpos-apos)<2 || (lastpos-dpos>3) || (lastpos-dpos<2))
+					{
+						alert("Please enter valid email id");
+						return false;
+					}		
+				}
+				return true;
+			}
+		}
+		</script>
+	</head>
+	<body>
+			<form name= "mailing" id="mailing1" action="mail.jsp"  onsubmit=" return ccvalidate() " method= "post" >
+				<label for="from"> From </label>
+				<input type= "text" size="35" name="from" id="from"  value = "vamshi.nookala@valuelabs.in" /> </br>
+				<label for = "mailto"> Mail To: </label>
+				<textarea rows= "2" cols ="30" id= "mailto"  name ="mailto" class ="mailto" onblur="ccvalidate('mailto');" required> sunanda.poda@valuelabs.in</textarea></br>
+				<label for = "cc"> CC </label>
+				<textarea  rows= "2" cols ="30" id="cc" name ="cc" class = "cc" size = "100" required onblur="ccvalidate('cc');">argus@valuelabs.in symqa@valuelabs.in </textarea> </br>
+				<label for = "subject"> Subject </label>
+				<textarea  rows= "2" cols ="30" id ="subject" class = "subject" name ="subject" required> TFS Weekly Status Report for the week</textarea> </br>
+				<label for = "body"> Body </label>
+				<textarea rows= "6" cols ="30" id = "body" name= "body" class = "body" required> Hi Sunanda,
+
+Please find the attached TFS Bug metrics sheet for the current week ()
+
+Please let me know if you need any further information on this.
+	Thank You </textarea></br><br><br>
+					<input type= "submit" id = "SUBMIT" class="submit" value = "submit" />
+			</form>
+	</body>
+</Html>

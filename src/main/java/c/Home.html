@@ -1,0 +1,94 @@
+<Html>
+	<Head>
+		<Title> Defect Metrics -Home</Title>
+		<script type="text/javascript">
+			
+		function Sum(name)
+		{
+			var t=0;
+			for(var i=1;i<5;i++)
+			{
+				t=t+Number(document.getElementById('p'+i).value);
+			}
+			document.Details.totalp.value=Number(t);
+			
+		}
+		function equal1()
+		{
+			var temp=0, total1=0;
+			for( var i=1;i<6; i++)
+			{
+				temp = document.getElementById('bt'+i).value;
+				total1 += Number(temp);
+			}
+			document.Details.total.value=Number(total1);
+		}
+		
+		function validate()
+		{
+			var flag=true;
+			var priotitytotal,defecttypetotal;
+			var total1= 0;
+			var temp=0;
+			for( var i=1;i<6; i++)
+			{
+				temp = document.getElementById('bt'+i).value;
+				total1 += Number(temp);
+			}
+	
+			if(total1 !=(Number(document.getElementById('total').value)))
+			{
+				alert( "Total number of bugs according to priorty and type should be same");
+				flag= false;
+				return flag;
+			}
+			var project= document.getElementById('project').value;
+			var pro=confirm("You are submitting to project:  "+ project);
+			if(pro)
+				flag = true;
+			else
+				flag = false;
+			
+			return flag;
+		}
+		</script>
+
+	</Head>
+	<Body bgcolor="445533" >
+	<font color="yellow">
+	<Form name = "Details" id = "Details1" action = "home_inter.jsp" onsubmit=" return validate()" method = "post">
+		<pre>
+															
+															
+															
+															
+															
+				<br> Please enter bugs according to priority         								Please select the project<select name="project" id="project">
+																									<option value="AE"> AE </option>
+																									<option value="Symphony"> Symphony </option>
+																									<option value="Developer"> Developer </option>
+																									<option value="AMP"> AMP </option>
+																									<option value="VBINDER"> VBinder</option>
+																									</select>
+<br><br><br>
+		Number of p1 bugs <input type = "text" id = "p1" name ="p1" maxsize= "4" value= "0" placeholder ="0" onBlur = "Sum('p1')"/><br>
+		Number of p2 bugs <input type = "text" id = "p2" name ="p2" maxsize= "4" value= "0" placeholder ="0" onBlur = "Sum('p2')"/><br>
+		Number of p3 bugs <input type = "text" id = "p3" name ="p3" maxsize= "4" value= "0" placeholder ="0" onBlur = "Sum('p3')"/><br>
+		Number of p4 bugs <input type = "text" id = "p4" name ="p4" maxsize= "4" value= "0" placeholder ="0" onBlur = "Sum('p4') "/><br>
+				<br> Number of bugs according to priority<input type="text" id="totalp" name="totalp" value= "0" readonly/></br>
+				<br> <br> Please enter bugs according to Defect type<br><br><br>
+		Number of User interface bugs <input type = "text" id = "bt1" name ="ui" value= "0" placeholder ="0" onBlur = "equal1('ui')" /><br>
+		Number of functional bugs <input type = "text" id = "bt2" name ="fun" value= "0" placeholder ="0" onBlur = "equal1('fun')"/><br>
+		Number of Calculation bugs <input type = "text" id = "bt3" name ="calc" value= "0" placeholder ="0" onBlur = "equal1('calc')"/><br>
+		Number of Validation bugs <input type = "text" id = "bt5" name ="val" value= "0" placeholder ="0" onBlur = "equal1('val')"/><br>
+		Number of Navigation bugs <input type = "text" id = "bt4" name ="nav" value= "0" placeholder ="0" onBlur = "equal1('nav')"/><br>
+		
+		
+		<br> Total Number of bugs according to type<input type="text" id="total" name="total" value= "0" readonly/></br>
+		</br>
+		<input type="submit" id = "SUBMIT" value = "submit"/>
+	</pre>
+	</Form>
+	</font>
+	</Body>
+</Html>

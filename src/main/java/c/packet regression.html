@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>
+		Packet regression
+	</title>
+	<style>
+			body{
+				text-align:center;
+				background-color:#555555;
+				color:whitesmoke;
+			}
+		</style>
+		<script>
+			function Sum()
+			{
+				var t=Number(document.getElementById('re-open').value);
+				t+=Number(document.getElementById('verified').value);
+				document.packet.total.value=Number(t);
+			}
+		</script>
+</head>
+<body align= "center">
+<form name="packet" action="packetregression.jsp" method="post">
+
+	<h3> Select project <select name="project" id="project">
+								<option value="AE"> AE </option>
+								<option value="SYM Violin"> SYM Violin </option>
+								<option value="C&W Phase 2 "> C & W Phase 2 </option>
+								<option value="Developer"> Developer </option>
+								<option value="ACRM"> ACRM </option>
+								<option value="GLP"> GLP </option>
+								<option value="Developer Budget">Developer Budget </option> 
+								</select> </br> </br>
+	</h3>
+	<h2> Please enter number of defects regressed as part of packet regression. </h2>
+		<table align="center">
+		<tr> <td>Number of re-opened defects</td>
+		<td><input type="text" id="re-open" name="re-open" value="0" onBlur = "Sum()"/></br></td></tr>
+		<tr><td> Number of verified defects</td>
+		<td><input type="text" id="verified" name="verified" value="0" onBlur = "Sum()"/> </br></td> </tr>
+		<tr><td> Total defects</td>
+		<td><input type="text" id="total" name="total" value="0" readonly/> </br></td> </tr>
+		<tr> <td align="right"> <input type="submit" value="submit"/> </td></tr>
+		</table>
+</form>
+</body>
+</html>

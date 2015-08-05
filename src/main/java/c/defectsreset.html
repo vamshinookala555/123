@@ -1,0 +1,32 @@
+<Html>
+<head> 
+		<title> Reseting defect values </title>
+		<style>
+			body{
+				background-color:#555555;
+				color:whitesmoke;
+			}
+		</style>
+		<script type="text/javascript">
+			function confirmreset()
+			{
+			var flag=true;
+			var val=confirm("confirm reset?");
+			if(val)
+				flag=true;
+			else
+				flag=false;
+			return flag;
+			}
+		</script>
+</head>
+	<body>
+		<center>
+			<h2> By clicking "reset" button you will set all values to '0' in metrics sheet.<br> This should be done only once in a week before you start entering the data.</h2>			
+		<form name="reset" id="reset" action="reset.jsp" onsubmit="return confirmreset()" method= "post">
+			<input type="submit" value="reset" />
+		</form>
+		</center>
+		
+	</body>
+</Html>
